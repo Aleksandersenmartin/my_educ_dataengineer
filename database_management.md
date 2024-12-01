@@ -14,9 +14,16 @@ This simplifies the management of database security, especially in environments 
 ##### B) Defining Role Privileges 
 Roles can have various types of privileges that determine what they are allowed to do: 
 - Can you log in?
-    - A role can be assigned the ````sql LOGIN```` privilege, allowing it to act as a user and euthenticate to the database.
+    - A role can be assigned the ````LOGIN```` privilege, allowing it to act as a user and euthenticate to the database.
     - Example in PostgreSQL
-    - ````sql CREATE ROLE user_role WITH LOGIN PASSWORD 'password';````
+````sql
+CREATE ROLE user_role WITH LOGIN PASSWORD 'password';
+````
+
+````sql
+CREATE ROLE data_analyst
+CREATE ROLE intern WITH PASSWORD 'PasswordForIntern' VALID UNTIL '2020-01-01'
+````
 - Can you create databases?
     - Some roles may be given the privilege to create new databases.
     - Example:
@@ -24,13 +31,17 @@ Roles can have various types of privileges that determine what they are allowed 
 - Can you write tables?
     - Writning to tables (inserting, updating, deleting data) is controlled through table-specific privileges granted to roles.
     - Example:
-    - ````sql GRANT INSERT, UPDATE ON table_name TO writer_role; ````
+````sql
+GRANT INSERT, UPDATE ON table_name TO writer_role;
+````
 
 ##### C) Interacting with the Authentication System 
 Roles often integrated with the database authentication system to manage access securely: 
 - Password: Roles can be assigned passwords for login purposes
 - Example in PostgreSQL
-- ````sql CREATE ROLE user_role WITH LOGIN PASSWORD 'secure_password'; ````
+````sql
+CREATE ROLE user_role WITH LOGIN PASSWORD 'secure_password';
+````
 - External Authentication: in some database systems, role can interact with external systems like LDAP, Kerberos, or Active Dictory for authentication
 
 
