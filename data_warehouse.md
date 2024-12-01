@@ -204,3 +204,19 @@ graph TD
   
 
 # What are the different layers of a data warehouse?
+
+### The Presentation layer 
+- Users interact with the presentation layer
+   - Area of constant developement
+ 
+```mermaid
+graph LR
+    PresentationLayer[Presentation Layer]
+    PresentationLayer --> DataAnalytics[Data Analytics]
+    PresentationLayer --> ReportingTools[Reporting Tools]
+    PresentationLayer --> AnalyticsTools[Analytics Tools]
+```
+
+
+
+
