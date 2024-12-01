@@ -145,7 +145,7 @@ graph TD
     BI --> Dashboard
     BI --> Monitoring
     BI --> Reports
-
+```
 ### Data Warehouse Life Cycle Diagram
 
 ```mermaid
