@@ -462,3 +462,30 @@ There are three primary types of data models used in data warehousing:
 5. Validate and Optimize:
 	- Test query performance.
 	- Optimize indexing, partitioning, and denormalization as needed.
+
+# ETL and ELT 
+
+### Data Format Cleaning 
+
+- Update values to an expected format
+	- Dates
+   	- Names of options
+   	- Capitalization
+- Ensures output is in a consistent format
+
+### Adress Paring 
+
+- Dividing a street adress into its components
+- Can use tools to validate adresses
+
+### Data Validation 
+
+1. Range check
+- Is the value within the expected range? 
+
+
+2. Type Check
+- Is the value the proper data type?
+
+### Duplicate row elimination 
+- This process gets rid of duplicate entries 
