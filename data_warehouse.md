@@ -296,12 +296,10 @@ graph LR
     %% ETL Process
     ETL[ETL Process]
 
-    %% Data Warehouse
-    DW[Data Warehouse]
-
-    %% Data Marts
+    %% Data Marts and Data Warehouse
     DM1[Data Mart 1]
     DM2[Data Mart 2]
+    DW[Data Warehouse]
 
     %% Tools
     DataMining[Data Mining]
@@ -309,18 +307,20 @@ graph LR
     AnalysisTools[Analysis Tools]
 
     %% Connections
+    %% Data Sources to ETL
     DS1 --> ETL
     DS2 --> ETL
-    ETL --> DW
-    DW --> DM1
-    DW --> DM2
+
+    %% ETL to Data Marts
+    ETL --> DM1
+    ETL --> DM2
+
+    %% Data Marts to Data Warehouse
+    DM1 --> DW
+    DM2 --> DW
+
+    %% Data Warehouse to Tools
     DW --> DataMining
     DW --> ReportingTools
     DW --> AnalysisTools
-    DM1 --> DataMining
-    DM1 --> ReportingTools
-    DM1 --> AnalysisTools
-    DM2 --> DataMining
-    DM2 --> ReportingTools
-    DM2 --> AnalysisTools
 ```
