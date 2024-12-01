@@ -217,6 +217,38 @@ graph LR
     PresentationLayer --> AnalyticsTools[Analytics Tools]
 ```
 
+#### Presentation Layer Groups: 
+- Automated reporting / dashboarding tools
+     - Goal:
+     - Create reports needed for decision making
+     - Create dashboards using historical data 
+- BI/Data analytics
+   - Goal:
+   - Tools for exploration
+   - Looking for patterns
+- Direct Queries
+   - Goal:
+   - Sophisticated tools for exploration
+
+# Data Warehouse Architectures 
+### Top - Down 
+
+1. Data warehouse
+   - must decide:
+        - On all data definitions, cleaning, and business rules
+        - before any data enters warehouse
+```mermaid
+graph LR
+    DS1[Data Source 1]
+    DS2[Data Source 2]
+    ETL[ETL Process]
+    DW[Data Warehouse]
+
+    DS1 --> ETL
+    DS2 --> ETL
+    ETL --> DW
+```
+
 
 
 
