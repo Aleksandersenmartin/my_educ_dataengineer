@@ -38,3 +38,4 @@ By using cloud computing, businesses and individuals can access and use IT resou
    - Allows developers to run code without managing servers. Resources are automatically scaled and billed per execution
    - Example Providers: AWS Lambda, Google Cloud Functions, Azure Functions.
   
+
