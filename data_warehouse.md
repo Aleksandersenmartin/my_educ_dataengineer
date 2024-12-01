@@ -270,6 +270,57 @@ graph LR
     DM2 --> AnalysisTools
 ```
 
+### Pros and Cons of top-down 
 
+Advantages: 
+- single source of truth for organizations
+- Normalization = Less storage
+- Easy to change data marts to support reporting changes
 
+Disadvantages: 
+- More joins = slower response time
+- Lengthy upfront work
+- higher startup cost
 
+### Kimball - bottom- up 
+- Denormalizes data
+- Focus on departmental data mart
+- data moves directly from ETL to data marts 
+
+```mermaid
+graph LR
+    %% Data Sources
+    DS1[Data Source 1]
+    DS2[Data Source 2]
+
+    %% ETL Process
+    ETL[ETL Process]
+
+    %% Data Warehouse
+    DW[Data Warehouse]
+
+    %% Data Marts
+    DM1[Data Mart 1]
+    DM2[Data Mart 2]
+
+    %% Tools
+    DataMining[Data Mining]
+    ReportingTools[Reporting Tools]
+    AnalysisTools[Analysis Tools]
+
+    %% Connections
+    DS1 --> ETL
+    DS2 --> ETL
+    ETL --> DW
+    DW --> DM1
+    DW --> DM2
+    DW --> DataMining
+    DW --> ReportingTools
+    DW --> AnalysisTools
+    DM1 --> DataMining
+    DM1 --> ReportingTools
+    DM1 --> AnalysisTools
+    DM2 --> DataMining
+    DM2 --> ReportingTools
+    DM2 --> AnalysisTools
+```
