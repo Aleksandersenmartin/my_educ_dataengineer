@@ -270,7 +270,7 @@ graph LR
     DM2 --> AnalysisTools
 ```
 
-### Pros and Cons of top-down 
+#### Pros and Cons of top-down 
 
 Advantages: 
 - single source of truth for organizations
@@ -324,3 +324,13 @@ graph LR
     DW --> ReportingTools
     DW --> AnalysisTools
 ```
+#### Pros and cons of bottom-up 
+Advantages: 
+- upfront development speed
+- lower startup costs
+- Denormalized = user friendly
+
+Disadvantages: 
+- Increased ETL processing time
+- Greater posibility of duplicate data
+- Ongoing development needed 
