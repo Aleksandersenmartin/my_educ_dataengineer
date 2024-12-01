@@ -243,4 +243,3 @@ It is a key komponent of Database Management Systems (DBMS) and is used to manag
 5. Data Virtualization:
     - Denodo, Dermio TIBCO Data Virtualization
 
-# Picking a Database Manage System (DBMS)
