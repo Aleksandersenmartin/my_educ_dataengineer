@@ -394,3 +394,71 @@ Organizations often integrate OLTP and OLAP systems:
 - Data Pipelines: Data from OLTP systems is periodically extracted, transformed, and loaded (ETL) into OLAP systems for analysis
 - Real-Time Analytics: With modern tools like Appache Kafka and Cloud platforms, some systems combine OLTP andOLAP functionallyity for real-time-analytics 
 
+# Data Warehouse Data modeling 
+Data Warehouse Data Modelling refers to the process of designing the structure and organization of data within a data warehouse. This process focuses on how data is stored, organized, and retrieved effeciently to support analytical queries, business inteligence, and reporting. 
+
+it is a critical step to build a data warehouse because it ensures that the data is well-structured, optimized for analytics, and aligned with business needs .
+
+### Key Aspects of Data modeling
+1. Purpose:
+	- Organize data to enable easy retrieval and analysis
+ - Ensure consistency, accuracy, and integrity of data
+ - suport complex queries and reporting with minimal performance overhead.
+
+2. Characteristics:
+	- Optimized for read-heavy operations (queries, reporting)
+ - stores historical data for trend analysis and decision-making
+ - focuses on denormalized structures to reduce query complecity.
+
+### Types of Data Models in Data Warehouse 
+There are three primary types of data models used in data warehousing: 
+
+1. Conseptual Data model
+	- Provides a high-level overview of the data warehouse
+	- Focuses on defining the entities, relationships, and business rules
+	- Used to communicate with stakeholders and align with business goals.
+
+2. Logical Data Model:
+	- Details the data structure, including tables, attributes, and relationships.
+	- Focuses on how data will be logically organized withoud considering physical implementation.
+
+3. Physical Data Model
+	- Specifies how the data will be physically stored in the database.
+	- includes:
+		- Database schema desing (e.g., star or snowflake schema)
+		- Inedxing strategies for performance optimization
+		- partitioning and clustering.
+
+### Key Components of Data Warehouse Data Modeling. 
+1. Fact Tables
+	- Conatin measurable, quantitative data (e.g., sales, profit, number of orders)
+
+2. Dimension Tables
+	- Contain descriptive, categorical data that provides context to facts (e.g., product details, customer demographics)
+
+3. Relationships
+	- one-to-many: between fact tables and dimension tables
+
+4. keys
+	- primary key: unique identifier for each record in a table
+	- Foreign key: Establishes relationships between fact and dimension tables.
+
+### Steps in Data Warehouse Data Modeling
+1. Understand Business Requirements:
+	- Identify what data needs to be analyzed and reported.
+	- Define metrics (facts) and dimensions needed to support these analyses.
+
+2. Identify Fact and Dimension Tables:
+	- Facts: Quantitative data like sales, revenue, and transactions.
+	- Dimensions: Contextual data like product, customer, and time.
+
+3. Choose the Schema:
+	- Decide between a star, snowflake, or galaxy schema based on complexity, performance, and storage needs.
+
+4. Design Logical and Physical Models:
+	- Create ER diagrams (entity-relationship) for logical models.
+	- Implement indexes, partitions, and clustering in physical models.
+
+5. Validate and Optimize:
+	- Test query performance.
+	- Optimize indexing, partitioning, and denormalization as needed.
