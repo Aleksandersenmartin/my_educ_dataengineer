@@ -104,7 +104,7 @@ Here is a breakdown of the key functions and capabilities of a data warehouse:
 - Purpose to store data may not be known
       - Less organized
 
-  # Data Hierarchy Diagram
+### Data Hierarchy Diagram
 
 ```mermaid
 graph TD
