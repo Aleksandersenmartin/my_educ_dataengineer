@@ -183,4 +183,24 @@ graph TD
     Monitoring --> Updates
     Updates --> IssueFix
     IssueFix --> Scalability
+```
+#### Planning - business requirements 
+1. Business Requirements:
+   - Understanding the organizational needs
+2. Data Modelling 
+   - Planning and organizing on integrating data
 
+#### Implementations
+1. ETL Design
+   - Implement data pipelines and ETL process
+2. BI Application Development:
+   - Set up business inteligence tools 
+  
+#### Support Maintenance 
+1. Mainatenance:
+   - Make any needed modifications
+2. Test & Deploy
+   - Testing
+  
+
+# What are the different layers of a data warehouse?
