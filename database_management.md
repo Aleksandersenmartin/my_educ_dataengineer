@@ -94,6 +94,11 @@ GRANT SELECT, INSERT, UPDSATE ON dev_tables TO developer_role;
 GRANT SELECT ON prod_tables TO analyst_role;
 ````
 
+````sql
+GRANT UPDATE ON ratings TO data_analyst;
+REVOKE UPDATE ON ratings FROM data_analyst;
+````
+
 3. Assign roles to users:
 ````sql
 GRANT developer_role TO alice;
@@ -106,3 +111,8 @@ GRAN admin_role TO admin_user;
 - Scalability: Roles make it easier to manage permissions in large environments with many users and databases.
 - Security: Permissions can be tightly controlled and easily audited.
 - Flexibility: Roles can be tailored for specific use cases or applications
+
+These are the available privileges in PostgreSQL: 
+````sql
+SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMORARY, EXECUTE, USAGE
+````
