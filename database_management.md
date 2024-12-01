@@ -116,3 +116,15 @@ These are the available privileges in PostgreSQL:
 ````sql
 SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMORARY, EXECUTE, USAGE
 ````
+
+# Table Partitioning 
+
+
+
+
+# Data Integration
+
+
+
+
+# Picking a Database Manage System (DBMS)
