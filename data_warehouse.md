@@ -146,4 +146,41 @@ graph TD
     BI --> Monitoring
     BI --> Reports
 
+### Data Warehouse Life Cycle Diagram
+
+```mermaid
+graph TD
+    subgraph Planning
+        Req[Requirements Gathering]
+        Arch[Architectural Design]
+        Res[Resource Allocation]
+    end
+
+    subgraph Implementation
+        ETL[ETL Process]
+        DataModel[Data Modeling]
+        Deployment[Deployment]
+        Testing[Testing and Validation]
+    end
+
+    subgraph Support_Maintenance
+        Monitoring[Performance Monitoring]
+        Updates[Regular Updates]
+        IssueFix[Issue Resolution]
+        Scalability[Scaling as Needed]
+    end
+
+    %% Connecting Phases
+    Planning --> Implementation
+    Implementation --> Support_Maintenance
+
+    %% Connecting Steps within Phases
+    Req --> Arch
+    Arch --> Res
+    ETL --> DataModel
+    DataModel --> Deployment
+    Deployment --> Testing
+    Monitoring --> Updates
+    Updates --> IssueFix
+    IssueFix --> Scalability
 
