@@ -85,3 +85,65 @@ Here is a breakdown of the key functions and capabilities of a data warehouse:
   - Sensitive information can be encrypted or masked to comply with regulations 
 
     
+# What is the difference between Data warehouses and Data lakes?
+
+### Data Marts 
+- A relational database for analysis
+- Data is focused on  one subject area
+- Few input data sources
+
+### Data Lakes 
+- Entire organization store of data
+      - Contains data from many departments
+      - many data input soruces
+      - Typically > 100 GB in size
+- Stores structured and unstructured data
+     - Examples: viedo, audio and documents
+- Less complex to make changes compared to data warehouses
+      - Fewer upstream and downstream effects to consider
+- Purpose to store data may not be known
+      - Less organized
+
+  # Data Hierarchy Diagram
+
+```mermaid
+graph TD
+    subgraph Databases
+        DB1[Database]
+        DB2[Database]
+        DB3[Database]
+    end
+    
+    subgraph Data Lake Layer
+        DL[Data Lake]
+    end
+    
+    subgraph Data Processing
+        Process[Predefined Process]
+    end
+    
+    subgraph Data Storage Layer
+        DW[Data Warehouse]
+        DM[Data Mart]
+    end
+    
+    subgraph Data Consumption Layer
+        BI[Business Intelligence]
+        Dashboard[Dashboard]
+        Monitoring[Monitoring]
+        Reports[Reports]
+    end
+
+    %% Connecting nodes
+    DB1 --> DL
+    DB2 --> DL
+    DB3 --> DL
+    DL --> Process
+    Process --> DW
+    DW --> DM
+    DM --> BI
+    BI --> Dashboard
+    BI --> Monitoring
+    BI --> Reports
+
+
