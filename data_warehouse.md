@@ -333,4 +333,62 @@ Advantages:
 Disadvantages: 
 - Increased ETL processing time
 - Greater posibility of duplicate data
-- Ongoing development needed 
+- Ongoing development needed
+
+# OLAP and OLTP Systems 
+## OLTP (Online Transaction Processing) 
+### Purpose: 
+	- OLTP systems are designed for managing transactional data in real-time. They handle a large number of short, atomic operations such as insert, updates, and deletes. 
+
+### Key Characteristics: 
+	- High Transaction Volume: Support many concurrent users performing transactions like placing orders or updating customer information 
+	- Normalized Data: Tables are usually normalized to minimize redundancy and optimize write performance 
+	- Low Latency: Prioritizes fast query processing for individual transactions 
+	- Data Scope: Focused on operational data like daily sales, inventory updates, or financial transactions. 
+
+### Typical Queries 
+	- Insert, update, or delete records (e.g., a new customer or order) 
+	- Short, simple queries:
+		○ SELECT * FROM orders WHERE order_id = 12345; 
+
+### Example use cases
+	- Banking systems: Processing withdrawals and deposits
+	- E-commerce Websites: Managing shopping Carts, inventory, and user profiles. 
+	- Ticket Booking Systems: Managing seat availability and reservations 
+
+### Tools 
+	- Database: MySQL, PostgreSQL, Microsoft SQL Server, Oracle Database 
+	- Storage: Relational Database System with row-based storage. 
+
+## OLAP (Online Analytical Processing) 
+### Purpose: 
+	- OLAP systems are designed for data analysis and reporting. They support complex queries and aggregate data over large datasets. 
+
+### Key Characteristics : 
+	- Complec Queries: Supports advanced queries like aggregations, groupings, and trends over time 
+	- Denormalized Data: Data is often stored in a denormilized format (e.g., star schema or snowflake schema) to optimize read performance 
+	- High Reader Performance: Optimized for fast reads and aggregations 
+	- Data Scope: Focused on historical and aggregated data used for decision-making
+
+### Typical Queries 
+	- Aggregations, Summaries, and trend analysis: 
+		SELECT product_category, SUM(sales) AS total_sales
+		FROM sales_data
+		WHERE sale_date BETWEEN '2024-01-01' AND '2024-12-31'
+		GROUP BY product_category;
+
+### Example use cases
+	- Business intelligence: Sales trends, customer segmentation, and market analysis 
+	- Data Warehousing: Aggregating data from multiple OLTP systems for reporting
+	- Financial Analysis: Budget forcasting and profitability analysis 
+
+### Tools
+	- Databases: Amazoon Redshift, Google Bigquery, Snowflake, Microsoft SQL Server 
+	- Storage: Columnar database systems, Data warehouses 
+
+
+### Combining OLTP and OLAP
+Organizations often integrate OLTP and OLAP systems: 
+	- Data Pipelines: Data from OLTP systems is periodically extracted, transformed, and loaded (ETL) into OLAP systems for analysis
+	- Real-Time Analytics: With modern tools like Appache Kafka and Cloud platforms, some systems combine OLTP andOLAP functionallyity for real-time-analytics 
+
