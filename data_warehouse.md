@@ -239,14 +239,35 @@ graph LR
         - before any data enters warehouse
 ```mermaid
 graph LR
+    %% Nodes for data sources
     DS1[Data Source 1]
     DS2[Data Source 2]
+
+    %% Nodes for ETL and Data Warehouse
     ETL[ETL Process]
     DW[Data Warehouse]
 
+    %% Nodes for Data Marts
+    DM1[Data Mart 1]
+    DM2[Data Mart 2]
+
+    %% Nodes for Tools
+    DataMining[Data Mining]
+    ReportingTools[Reporting Tools]
+    AnalysisTools[Analysis Tools]
+
+    %% Connections
     DS1 --> ETL
     DS2 --> ETL
     ETL --> DW
+    DW --> DM1
+    DW --> DM2
+    DM1 --> DataMining
+    DM1 --> ReportingTools
+    DM1 --> AnalysisTools
+    DM2 --> DataMining
+    DM2 --> ReportingTools
+    DM2 --> AnalysisTools
 ```
 
 
