@@ -386,3 +386,110 @@ def multiply(a, b, c):
   return a * b * c
 product = multiply(2, 3, 4) #The product is now 24
 ```
+
+## Arbitary Arguments 
+Arbitary arguments in Python refer to a way of defining functions that can accept a variable number of arguments, rather than a fixed count. this is often useful when you're not sure in advance how many arguments will be passed to a function. 
+
+There are two main types of arbitary arguments: 
+
+**1. Arbitrary Positional Arguments (*args)**
+using *args in a function definition allows you to pass any number of positional arguments to that functions. inside the function, args is treated like a tuple containing all the extra positional arguments. 
+
+```python
+def print_numbers(*args):
+  for number in args:
+    print(number)
+print_numbers(1, 2, 3) #prints 1, 2, 3
+print_numbers(10) #prints 10
+print_numbers() # prints nothing (but doesn't error)
+```
+in this example, print_numbers can handle 0, 1, or many positional arguments. 
+
+**2. Arbitary Keyword Arguments** 
+Using **kwargs lets your function accept any number of keyword arguments. inside the function, kwargs is treated like a dictionary, where each key-value pair correspons to a passed keyword argument and its value. 
+
+```python
+def print_info(**kwargs):
+  for key, value in kwargs.items():
+    print(f"{key}: {value}")
+print_info(name="Alice", age=30, city="New York")
+```
+
+#### Why Use Arbitrary Arguments? 
+- **Flexibility:** your function can handle a wide range of inputs
+- **Convenience:** Sometimes you don't know how many arguments you'll need up front.
+- **Forwarding Arguments:** They're useful when building wrapper functions or decorators that accept arguments and pass them on to other functions.
+
+##### Important Notes: 
+You can combine regular parameters with *args and **kwargs in a function definition, but *args must come after regular positional parameters, and **kwargs must come last. 
+```python
+def mixed_function(required, *args, **kwargs):
+  print("Required:", required)
+  print("Args:", args)
+  print("Kwargs:", kwargs)
+mixed function(42,1,2,3, name="Alice",age=30)
+```
+
+*args and **kwargs in the function definition means "Take all extra positional arguments that wheren't explicitly declared and put them into a tuple called args" 
+```python
+def print_all(*args):
+  for arg in args:
+    print(arg)
+print_all(1,2,3)
+print_all("apple", "banana") 
+```
+
+#### Key points: 
+- args is a tuple
+- you don't have to name it args; any valid identifier works, but args is the conventional choice.
+- if you define other positional parameters, they must come before *args
+
+#### Combine with regular arguments: 
+```python
+def describe_person(name, *hobbies):
+  print("Name:", name)
+  print("Hobbies:", hobbies)
+describe_person("Alice", "reading", "gardening")
+```
+
+## **Kwargs 
+#### Definition_ 
+using **kwargs in the function definition means "take all extra keyword arguments that weren't explicitly declared and put them into a dictionary called kwargs". 
+```python
+def print_date(**kwargs):
+  for key, value in kwargs.items():
+    print(f"{key}:{value}")
+print_data(name="Alice", age=30, city="New York")
+```
+
+#### Key Points: 
+- kwargs is a dictionary
+- The key are the argument names, and the values are the argument values you passed in.
+- kwargs is useful when you want to allow for optional or flexible keyword-based inputs
+- like *args, the name doesn't have to be kwargs, but it's the standard convention.
+```python
+def describe_product(name, price, **extras):
+  print("product Name:", name)
+  print("price:" price)
+  print("Extras:", extras)
+describe_product("Laptop", 999.99, color="silver", warranty="2 Years"
+```
+
+#### Using both *args and *kwargs
+it's possible to use both in the same function definition, but the order in the function signature matters: 
+- positional parameters (if any) first
+- *args second
+- **kwargs last
+
+```python
+def process_order(order_id, *items, **details):
+  print("Order ID:" order_id)
+  print("Items:", items)
+  print("Details:", details)
+process_order(1001, "apple", "banana", "cherry", status="pending", priority="high")
+```
+
+#### When yo use *args and **kwargs?
+- **Flexibility:** if you don't know the exact number of arguments your function will receive
+- **Wrapper Functions:** When writing decorators or wrapper functions, you can pass through any arguments .
+- **Extendability:** Function can evolve over time without breaking existing calls. Adding new parameters without affecting existing code is easier with **kwargs 
