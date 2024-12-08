@@ -250,3 +250,28 @@ else:
 ```
 
 ## While Loops 
+A while loop in python repeatedly executes a block of code as long as a given condition remains True. this makes it useful for scenarios where you don't know in advance how many times you need to iterate, but instead rely on a condition to continue or terminate the loop 
+
+```python
+while condition:
+  #code block to execute repeatedly 
+```
+
+- **condition:** A Boolean expression that is evaluated before each iteration of the loop. if True, the loop's body executes; if False, the loop stops: 
+
+```python
+count = 0
+while count < 5:
+  print(count
+  count += 1
+```
+
+#### Infinetie loops 
+if the condition never becomes False, you'll get an infinite loop that never ends on its own: 
+
+```python
+while True:
+  print("this will print forever!")
+```
+
+"This is useful in some cases (like running servers or waiting for user input), but generally, you want to make sure something inside tha loop can change to eventually break out of it. 
