@@ -492,4 +492,13 @@ process_order(1001, "apple", "banana", "cherry", status="pending", priority="hig
 #### When yo use *args and **kwargs?
 - **Flexibility:** if you don't know the exact number of arguments your function will receive
 - **Wrapper Functions:** When writing decorators or wrapper functions, you can pass through any arguments .
-- **Extendability:** Function can evolve over time without breaking existing calls. Adding new parameters without affecting existing code is easier with **kwargs 
+- **Extendability:** Function can evolve over time without breaking existing calls. Adding new parameters without affecting existing code is easier with **kwargs
+
+## Lambda Functions
+Lambda functions in python are small, anonymous functions defined without a name. They are often referred to as anonymous functions because they're not declared in the standard manner by using the def keyword. instead, they use the lambda keyword. lambda functions are typically used for short, simple tasks, and are most helpful when you need a small function for a brief time, often as an argument to higher-order functions like map(), filter(), or sorted(). 
+
+```python
+average = lambda x: sum(x)/len(x)
+print(average([3,6,9]))
+Resulting: 6.0
+```
