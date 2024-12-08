@@ -275,3 +275,54 @@ while True:
 ```
 
 "This is useful in some cases (like running servers or waiting for user input), but generally, you want to make sure something inside tha loop can change to eventually break out of it. 
+
+#### Controlling the flow: break and continue 
+- **break:** immediaely exits the current loop
+
+```python
+count = 0
+while True:
+  print(count)
+  count += 1
+  if count == 3:
+    break #stops the loop when count is 3 
+```
+
+- **continue:** Skips the rest of the current iteration and moves to the next iteration of the loop
+
+```python
+count = 0
+while count < 5:
+  count += 1
+  if count == 3:
+    countinue # skip printing when count is 3
+  print(count
+```
+#### The else Clause with while loops 
+Similar to for loops, a while loop can also have an else block. the else block executes only if the loop ends without a break
+
+```python
+count = 0
+while count < 3
+  printing(count += 1
+else:
+  print("Loop completed whithout break")
+
+```
+
+#### Common Patterns 
+- Waiting for user input or a certain condition:
+```python
+while True:
+  user_input = input("Enter 'quit' to stop:")
+    break
+```
+
+- Loop until a certain computational condition is met:
+
+```python
+number = 1
+while number < 1000:
+  number = number * 2
+print("Number is now:", number)
+```
