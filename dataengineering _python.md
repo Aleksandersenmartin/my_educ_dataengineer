@@ -81,3 +81,32 @@ persons{
   "age": 25,
   "is_student": True
 ```
+
+## Conditional statements and operators
+
+In python, conditional statements and operators are fundamental building blocks that allow you to control the flow of your program. by evalutating conditions - expressions that result in a Boolean value (true or False) - you can decide which block of code executed under certain circumstances. this lets you make your code dynamic and responsive to different inputs, states, or data values. 
+
+### Conditional Statements 
+#### The IF statement 
+The if statement is the most basic form of conditional logic in Python. it checks whether a given condition is True and, if so, executes the code that follows: 
+
+```python
+age = 20
+if age >= 30:
+  print("You are old enough to vote")
+```
+
+#### The if-elif-else Chain 
+Often, you'll have multiple mutally exclusive conditions to check. in that case, you can use elif (short for "else if") to stack multiple conditions: 
+
+```python
+grade = 85
+if grade >= 90:
+  print("A")
+elif grade >= 80:
+  print("B")
+elif grade >= 70:
+  print("C")
+else:
+  print("Below C")
+```
