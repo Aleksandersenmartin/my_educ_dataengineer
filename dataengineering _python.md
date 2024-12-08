@@ -346,4 +346,43 @@ print("Number is now:", number)
 |sorted()|Sort elements in a data structure in ascending order|
 |help()|Get information about a function, variable, or value|
 
-## Modules
+## Functions
+A function is a reusable block of code designed to perform a specific task. Functions help organi<e your code into logical, manageable pieces, making it more readable, easier to maintain, and avoiding repetition. instead of writing the same piece of code multiple times, you write it once in a function and then "call" that function whenever you need it. 
+
+#### Defining a Function 
+You create a function using the **def** keyword, followed by the function''s name and a set of parentheses. inside the parentheses, you can include parameters - variables that accept values (called arguments) passed into the function.
+The function's code block is indented underneath the definition line. 
+
+```python
+def greet(name):
+  print("Hello, "+ name + "!"
+```
+
+#### Calling a Function
+To use a function, just write its name followed by a pair of parantheses. if the function has parameters, provide them as arguments inside the parentheses. 
+
+```python
+greet("Alice")   #Prints: Hello, Alice! 
+greet("Bob")     #Prints: Hello, Bob! 
+```
+When you call greet ("Alice"), the value Alice" is passed to the name parameter, and the function executes its code using that value. 
+
+#### Returning Values 
+Functions can also return calues using the **return** keyword. this allows you to store the result of a function call in a cariable and use it later. 
+
+```python
+def add_numbers(a, b):
+  result = a + b
+  return result
+sum_of_numbers = add_numbers(3, 5) #sum_of_numbers now holds 8
+print(sum_of_numbers) #Prints: 8
+```
+Here, add_numbers(3, 5) returns the value 8. without the return statement, the function would perform its calculation but wouldn't give us back a usable result. 
+
+#### Multiple Parameters
+A function can have multiple parameters: 
+```python
+def multiply(a, b, c):
+  return a * b * c
+product = multiply(2, 3, 4) #The product is now 24
+```
