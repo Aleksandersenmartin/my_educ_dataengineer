@@ -497,8 +497,84 @@ process_order(1001, "apple", "banana", "cherry", status="pending", priority="hig
 ## Lambda Functions
 Lambda functions in python are small, anonymous functions defined without a name. They are often referred to as anonymous functions because they're not declared in the standard manner by using the def keyword. instead, they use the lambda keyword. lambda functions are typically used for short, simple tasks, and are most helpful when you need a small function for a brief time, often as an argument to higher-order functions like map(), filter(), or sorted(). 
 
+#### Syntax of a Lambda Functions 
+The basix syntax of a lmbda function is: 
+```python
+lambda arguments: expression 
+```
+- **arguments:** The inputs to the function. you can have zero, one, or multiple arguments, separated by commas
+- **expressions:** A single expression that the lambda function evaluates and returns. Lambda functions are limited to a single expression, which means you can't write multi-line logic directly inside them.
+
+```python
+add_ten = lambda x: x + 10
+print(add_ten(5)) #Outputs 15
+```
 ```python
 average = lambda x: sum(x)/len(x)
 print(average([3,6,9]))
 Resulting: 6.0
+```
+#### Characteristics of Lambda Functions: 
+1. Anonymous: They don't require a name (although you can assin them to a variable)
+2. Single expression: They're meant for concise operations. complex logic that spans multiple lines is usually better served by a regular function defined with def.
+3. useful inline: lambda functions are commonly used inline with bult-in functions that expect a function as an argument.
+
+#### Common use cases 
+- **With** map() and filter()=:
+```python
+#map: apply a function to every element in a list.
+numbers = [1, 2, 3, 4]
+squared = list(map(lambda x: x**2, numbers))
+print(squared) #1,4,9,16
+
+evens = list(filter(lambda x: x%2 ==0, numbers))
+print(evens) #[2,4]
+```
+- **With** sorted() for custom sorting:
+```python
+people [("Alice", 30), ("Bob", 25), ("Charlie", 35)]
+#Sort by age using a lambda as key
+sorted_people = sorted(people, key=lambda person: person[1])
+print(sorted_people) 
+```
+
+#### Using Lambda with Map () 
+the map() function applies a given function to each item in an iterable (like list or tuple) and returns a map object (which can be converted into a list) a Lambda is perfect when the transformation you want to apply is simple 
+
+## Error handling 
+Error handling in python allows you to anticipate, detect, and gracefully respond to situations where something goes wrong in your code's execution. Rather than letting the program crash or produce incorrect results without explanation, proper error handling ensures your code can recover, inform the user, or take corrective actions. 
+
+#### Exceptions and the try-except Block
+When python encounters an error that it cannot handle, it raises an exception. an exception is a spceial kind of error object that interrupts the normal flow of the program. common examples includes: 
+- **ValueError:** Raised when a function receives an argument of the correct type but an inapporpriate value
+- **TypeValue:** Raised when an operation is applied to an object of an inappropriate type
+- **ZeroDivisionError:** Raised when attempting to devide by zero
+- **FileNotFoundError:** Raised when trying to open a file that doesn't exists.
+
+you can handle these exceptions usin a try-except block. the basic structure is: 
+
+```python
+try:
+  #code that might raise an exception
+  result = 10 / 0
+except ZeroDivisionError:
+  #code that runs if the specified exeption occurs.
+  print("You Tried to devide by zero") 
+```
+
+##### How it works: 
+1. Python executes the code in the try block
+2. if no exeception occurs, the exept block is skipped
+3. if an exception of the type listed in except occurs, the code in the try block stops at the point of the error, and execution jumpos to the except block
+4. if the exception doesn't match the except type, python looks for another except block that matches or, if none is found, the exception is unhandled and the program may terminate with an error message.
+
+#### Catching multiple exceptions: 
+```python
+try:
+  number = int(input("Enter a number: "))
+  result = 10 / number
+except ValueError:
+  print("that's not a valid integer!")
+except ZeroDivisionError:
+  print("You cant divide by Zero!")
 ```
