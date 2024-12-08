@@ -110,3 +110,143 @@ elif grade >= 70:
 else:
   print("Below C")
 ```
+
+## For Loops 
+in Python, a for loop is used to iterate over sequences (like lists, tubples, strings) or other iterable ovjects (such as dictonaries or file objects). it allows you to execute a block of code repeatedly for each element in the sequence. unlike some other languages that use a traditional for loop structure (like for(int i = 0; i < n; i++)), python's for loops are more akin to "for each" loops that focus on elements rather dan indicies. 
+
+```python
+for element in iterable:
+  #code block
+```
+- element: a temporary variable that takes on the value of each item in the iterable as the loop progresses
+- iterable: an object capable of returning its elements one at a time, such as a list, tuple, string, rane, or a custom object that implements iteration methods.
+
+##### Example 
+```python
+frutis = ["apple", "banana", "cherry]
+for fruit in fruits:
+  print(fruits)
+```
+
+##### Outcome 
+```python
+apple
+banana
+cherry
+```
+
+in this example, the loop will:
+1. Assign fruit = "apple"
+2. print"apple"
+3. Assign fruit = "banana"
+4. print"banana"
+5. Assign fruit = "cherry"
+6. print"cherry"
+
+#### Iterating over different data types
+##### List:
+ ```python
+my_list = [1,2,3,4]
+for num in my_list:
+  print(num)
+```
+
+##### Tuples: 
+```python
+my_tuple = (10,20,30)
+for item in my_tuple:
+  print(my_tuple)
+```
+
+##### Strings:
+```python
+for char in "hello":
+  print(char)
+```
+
+##### Dictionaries: 
+```python
+my_dict = {"a":1, "b":2, "c":4}
+for key in my_dict:
+  print(key, my_dict[key])
+```
+
+##### Files: 
+```python
+with open("example.txt") as file: 
+  for line in file:
+    print(line)
+```
+
+#### using range() with For Loops 
+if you need a numeric sequence, you can use the built-in range() function, which generates an artimetic sequence of integers: 
+```python
+for i in range(5):
+  print(i)
+```
+
+#### Enumerating Over Iterables 
+if you want the index along with the element, you can use the built-in enumerate() function: 
+```python
+fruits = ["apple", "banana", "cherry"]
+for index, fruit in enumerated(fruits):
+  print(index,fruit)
+```
+##### Outcome: 
+0 apple
+1 banana
+2 cherry 
+
+#### Nested For Loops 
+You can nes for loops if you need to iterate over multiple dimensions or complex sturctures: 
+
+```python
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+for row in matrix:
+  for value in row:
+    print(value)
+```
+
+#### The break and contionue statements 
+- **Break:** stop the loop entierly and proceed to the next statement after the loop
+```python
+for i in range(10):
+  if i == 5:
+    break
+print(i)
+```
+
+- **Continue:** Skip the rest of the current iteration and move on to the next iteration
+
+```python
+for i in range(5):
+  if i == 2:
+    continue
+  print(i)
+
+# This prints 0,1,3,4 (skipping 2) 
+```
+
+#### The else clause with For Loops 
+A for loop can have an optional else clause. the else block executs if the loop finishes normally (i.e., without hitting a break): 
+```python
+for i in range(3):
+  print(i)
+else:
+  print("Loop completed normaly"): 
+```
+
+```python
+for i in range(3):
+  if i == 1:
+    break
+  print(i)
+else:
+  print("loop completed normally")
+```
+
+## While Loops 
