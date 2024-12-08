@@ -328,7 +328,7 @@ print("Number is now:", number)
 ```
 
 |Keyword|Function|
------------------
+|-------|--------|
 |and|Evaluate if multiple conditions are true|
 |or|Evaluate one or more conditions are true|
 |in|evaluate if a value is in a data structure|
