@@ -333,3 +333,17 @@ print("Number is now:", number)
 |or|Evaluate one or more conditions are true|
 |in|evaluate if a value is in a data structure|
 |not|Evaluate if a value is not in a data structure|
+
+## Function cheat sheet 
+|Function|Returns|
+|--------|-------|
+|print()|Display an output, e.g., variable's value|
+|max()|Find the larges value in a data structure|
+|min()|Find the smallest calue in a data structure|
+|sum()|Add up all elements in a data structure|
+|round()|Trim a float to a specified number of decimal places|
+|len()|Count the number of elements in a data structure|
+|sorted()|Sort elements in a data structure in ascending order|
+|help()|Get information about a function, variable, or value|
+
+## Modules
