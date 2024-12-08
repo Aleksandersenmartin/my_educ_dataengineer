@@ -326,3 +326,10 @@ while number < 1000:
   number = number * 2
 print("Number is now:", number)
 ```
+
+|Keyword|Function|
+-----------------
+|and|Evaluate if multiple conditions are true|
+|or|Evaluate one or more conditions are true|
+|in|evaluate if a value is in a data structure|
+|not|Evaluate if a value is not in a data structure|
