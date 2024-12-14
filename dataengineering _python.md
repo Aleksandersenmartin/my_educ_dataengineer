@@ -822,3 +822,109 @@ with engine.connect() as conn:
 with engine.connect() as conn:
   conn.execute(users.delete().where(users.c.name== 'Bob'))
 ```
+
+## Querying relational databases in python 
+
+```python
+from sqlalchemy import create_engine
+import pandas as pd
+engine = create_engine('sqlite:///Northwind.sqlite')
+con = encinge.connect()
+rs = con.execute('SELECT * FROM Orders')
+
+con.close()
+```
+Using SQLAlchemy and Pandas togheter allows you to leverage SQLAlchemy's powerful database connection and query capabilities while benefiting from from Pandas data manipulation and analysis features. here's how you can integrate the two effecitevly:
+
+### Overview: 
+1. use SQLAlchemy to connect to a database and execute queries
+2. Use Pandas to read data from the database and manupulate it
+3. Optionally, use Pandas to write DataFrames back to the database:
+
+#### Setting up SQLAlchemy 
+```python
+from sqlalchemy import create_eninge
+
+#SQLite example
+engine = create_engine('sqlite:///example.db')
+
+```
+
+#### Reading Data into Pandas 
+You can execute SQL queries using Pandas and load the result directly into a DataFrame 
+
+```python
+import pandas as pd
+"read data using a raw SQL query
+query = 'SELECT * FROM users'
+df = pd.read_sql(query, con=engine)
+print(df)
+```
+
+#### Write Data from Pandas to Database 
+You can also write Pandas DataFrame directly into a datbase table. 
+```python
+data = {'name':['Alice', 'Bob'], 'age':[30,25]}
+df = pd.DataFrame(data)
+
+#Write to the database (if the tbale exists, replace it)
+df.to_sql('users', con=engine, if_exists='replace', index=False)
+
+# Options for `if_exists`:
+# - 'fail': Raise an error if the table exists.
+# - 'replace': Drop the table if it exists and create a new one.
+# - 'append': Add new rows to the existing table. 
+```
+
+#### Updating Data with Pandas 
+To update specific rows, fetch the data into a DataFrame, modify it, and write it back 
+```python
+df = pd.read_sql('SELECT * FROM users', con=engine)
+
+#modify the dataframe
+df.loc[df['name'] == 'Alice' , 'age'] = 31
+
+#write the updated DataFrame back to the database
+df.to_sql('users', con=engine, if_exists='replace',index=False)
+```
+
+#### A Complete Workflow example: 
+```python
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+import pandas as pd
+
+# Connect to SQLite
+engine = create_engine('sqlite:///example.db')
+
+# Define a new table
+metadata = MetaData()
+users = Table(
+    'users', metadata,
+    Column('id', Integer, primary_key=True),
+    Column('name', String),
+    Column('age', Integer)
+)
+
+# Create the table
+metadata.create_all(engine)
+
+# Insert initial data
+data = pd.DataFrame({'name': ['Alice', 'Bob', 'Charlie'], 'age': [30, 25, 35]})
+data.to_sql('users', con=engine, if_exists='replace', index=False)
+
+# Query and load into Pandas
+df = pd.read_sql('SELECT * FROM users', con=engine)
+print("Original Data:")
+print(df)
+
+# Update data in Pandas
+df.loc[df['name'] == 'Alice', 'age'] = 31
+
+# Write the updated data back
+df.to_sql('users', con=engine, if_exists='replace', index=False)
+
+# Verify the update
+df = pd.read_sql('SELECT * FROM users', con=engine)
+print("\nUpdated Data:")
+print(df)
+```
