@@ -751,3 +751,74 @@ print(df_loaded)
 1. **Complecity:** Steeper learning curve compared to simpler formats like CSV
 2. **Overkill for Smal Datasets:** Best suited for large or complex datasets
 3. **Binary Format:** Not human-readable like CSV or JSON
+
+
+## Creating a database engine in Python
+Creating a database engine in Python can be achieved by using the SQLAlchemy library, which is a powerful and flexible SQL toolkit and object-relationalMapping (ORM) library. A database engine is essentially a connection interface to a database that allows tou to perform SQL operations programmatically. 
+
+Here's a step-by-step guide to creating a working with a database engine in python: 
+
+#### importing required modules
+```python
+#pip3 install sqlalchemy
+
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+```
+
+#### Create a database engine
+```python
+#example: SQLite
+engine = create_engine('sqlite:///example.db')
+
+#For other databases (postgreSQL, MySQL, etc) use the appropriate connection string
+# PostgreSQL: Create_enginge('posgresql://user:password@localhost/dbname')
+# MySQL: create_engine('mysql+pymysql://user:password@localhost/dbname')
+```
+
+#### Define Schema 
+```python
+from sqlalchemy import Table, Column, Integer, String, MetaData
+
+metadata = MetaData()
+
+#define a table
+users = Table(
+'users, metadata,
+Column('id', integer, primary_key=True),
+column('name', String)
+column('age', Integer)
+)
+```
+
+#### Create Tables 
+```python
+metadata.create_all(enginge) #this creates all tables defined in the metadata object
+```
+#### Insert Data into the Database 
+```python
+with enginge.connect() as conn:
+  #insert a row
+  conn.execute(users.insert().values(name='Alice' age=30))
+  conn.execute(users.insert().values(name='Bob', age=25))
+```
+
+#### Query data 
+```python
+with enginge.connect() as conn:
+#query data
+result = conn.execute(users.select())
+for row in result:
+  print(row) #output: (1, 'Alice', 30),(2, 'Bob', 25)
+```
+
+#### update or delete Data 
+
+```python
+#Update
+with engine.connect() as conn:
+  conn.execute(users.update().where(users.c.name=='Alice').values(age=31))
+
+#Delete:
+with engine.connect() as conn:
+  conn.execute(users.delete().where(users.c.name== 'Bob'))
+```
