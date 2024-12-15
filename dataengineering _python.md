@@ -928,3 +928,95 @@ df = pd.read_sql('SELECT * FROM users', con=engine)
 print("\nUpdated Data:")
 print(df)
 ```
+
+## Connect to an API - HTTP requests to import files from the web
+
+- HTTP = HyperTextTransferProtocol
+- HTTPS - More secure form of HTTP
+- Goint to a website = sending HTTP requests
+    - GET request
+- **urlretrieve()* perfroms a GET request
+
+```python
+from urllib.request import urlopen, Request
+url = 'https://www.wikipedia.org/'
+request = Reguest(url)
+response = urlopen(request)
+html = response.read()
+respones.close()
+```
+
+GET Requests using requests 
+```python
+import requests
+url = 'https://www.wikipedia.org/'
+r = requests.get(url)
+text = r.text
+```
+
+## Scraping the web in Python 
+web scraping in Python involves extracting data from websites by fetching their HTML content and parsing it to extract relevant information. here's an overview of how it works and a guide to get started. 
+
+### How Web Scraping Works 
+1. Fetch web content
+   - Use HTTP requests to get the HTML content of a webpage
+2. Parse the HTML:
+   - Analyze the structure of the webpage (HTML tags) to find the data you need.
+3. Extract data:
+   - Using paring libraries to extraxt specific elements (e.g., text, images, links) from the HTML
+4. Store data:
+   - Save the extracted data in a desired format (CSV, database, etc) for further analysis.
+
+### Libraries for Web Scraping in python 
+- **requests:** for making HTTP requests to fetch webpage content.
+- **BeautifulSoup:** for paring and extracting HTML/XML data.
+- **Selenium:** for scraping dynamic pages requiring JavaScript rendering
+- **Scrapy:** a robust web scraping framework for large-scale projects.
+
+#### An basic webscraping example
+```python
+import requests
+from bs4 import BeautifulSoup
+# URL of the webpage to scrape
+url = 'https://wikipedia.org/'
+
+#Fetch the webpage content
+response = Requests(url)
+
+#Check if the request was successful
+if response.status_code == 200:
+
+  #parse the HTML content
+  soup = BeautifulSoup(response.text, 'html.parser')
+
+  #Extracting article titles (assume titles are in <h2>
+  titles = soup.find_all('h2')
+
+  #print the titles
+  for title in titles:
+    print(title.text.strip())
+else:
+  print(f'Failed to fetch the page. Statuscode: {response.status_code}')
+  
+```
+
+
+#### Storing scraped data 
+
+```python
+#Save to CSV
+import csv
+data = [["Title 1", "Description 1",], ["Title 2", "Description 2"]]
+
+#write data to a CSV file
+with open ('data.csv', 'w', newline = '') as file:
+  writer = csv.writer(file)
+  writer.writerow(["Title", "Description"]) #Header row
+  writer.writerrows(data)
+
+# Save to Panads DataFrame:
+import pandas as pd
+#convert list of dictionaries to a DataFrame
+df = pd.DataFrame(data, columns=["Title", "Description"]
+df.to_csv("data.csv", index=False) 
+
