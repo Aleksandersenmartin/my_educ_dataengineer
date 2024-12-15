@@ -1019,4 +1019,86 @@ import pandas as pd
 #convert list of dictionaries to a DataFrame
 df = pd.DataFrame(data, columns=["Title", "Description"]
 df.to_csv("data.csv", index=False) 
+```
 
+## APIs and JSONs
+#### API: 
+- API = Application Programming Interface
+- Protocols and routines
+  - Building and interacting with software applications
+Is a set of rules and protocols that allow different software systems to communicate with each other. it acts as a bridge between applications, enabling them to share data and functionality.
+
+##### Key Features of an API: 
+- **Request and Response:** APIs work by sending requests (e.g., GET, post) and receiving responses, often in a structured format like JSON.
+- **Endpoint:** a specific URL where the API can be accessed
+- **HTTP Methods:**
+    - GET: Retrieve data.
+    - POST: send data
+    - PUT: Update data
+    - DELETE: remove data
+
+
+#### JSON
+- JavaScript Object Notation
+- Real-Time server-to-browser communication
+
+is a lightweigted data-interchange format that's easy for humans to read and write, and easy for machines to parse and generate. it is the most common format for exchanging data with APIs 
+
+##### Loading JSONs in python 
+```python
+import json
+with open("snakes.json", "r") as json_file:
+  json_data=json.load(json_file)
+
+# for exploring:
+for key, value in json_data.items():
+  print(key + ":", value) 
+```
+
+##### API Example: Step by step: 
+```python
+import requests
+
+#define the API endpoint
+URL = "https://wikipedia.org/"
+
+#Make a GET request to the API
+response = request.get(url)
+
+#Chek the response status
+if response.status_code == 200:
+  print("API Request successful!")
+  #parse JSON data
+  data = response.json()
+  print(data[:5]) #print the first 5 items
+else:
+  print(f"API request failed with status code: {response.status_code}")
+
+``` 
+
+```python
+[
+  {"userId": 1, "id": 1, "title": "Post 1", "body": "This is the first post"},
+  {"userId": 1, "id": 2, "title": "Post 2", "body": "This is the second post"}
+]
+```
+
+```python
+# Extract specific data from the JSON
+for post in data[:5]:  # Loop through the first 5 posts
+    print(f"Title: {post['title']}")
+    print(f"Body: {post['body']}\n")
+
+```
+
+#### Real-World API and JSON use Cases 
+1. Weather Data - Fetch currenct weather using APIs like OpenWeatherMap
+2. Finanfical Data - Use APIs like Alpha Vantage or Yahoo Finance to get stock prices
+3. Social Media - Use APIS from twitter or instagram to analyze trends
+4. News Aggregation - Fetch News headlines from APIs like NewsAPI
+
+#### Best Practices for APIs and JSON 
+1. API Keys - many APIs require authentication using an API key. Keep it secure.
+2. Rate Limits - Respect the API's rate limit to avoid getting blocked
+3. Error Handling - Always check the response status code and handle errors gracefully
+4. Documentation - Read the API documentation carefully to understand its endpoints, parameters, and response format. 
