@@ -1,4 +1,4 @@
-# To connect DBT to SNOWFLAKE 
+## To connect DBT to SNOWFLAKE 
 
 First do we have to create a new project in VS studio 
 
@@ -22,3 +22,8 @@ when this is in scope do we create our project with the init function in the ter
 dbt init dbt_snoflake
 ```
 When we use the dbt init in the terminal do we get requirements that we have to ensure is right to connect to the correct SNOWFLAKE db
+
+## From Snowflake to DBT to Snowflake
+after we have created a project and set the folder to our directory do we find the correct schema wi will clean and create a pipeline through. 
+
+then we write a SQL CTE to create the correct name to the correct attribute. 
