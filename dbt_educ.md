@@ -27,3 +27,32 @@ When we use the dbt init in the terminal do we get requirements that we have to 
 after we have created a project and set the folder to our directory do we find the correct schema wi will clean and create a pipeline through. 
 
 then we write a SQL CTE to create the correct name to the correct attribute. 
+
+however, we are creating folders as sr(source) and dim() to each core layer
+
+## Materialized sql 
+dbt_yalla.yml
+```python
+models:
+  dbtyalla:
+  +materialized: view
+  dim: 
+  +materialized: table
+```
+### Materialized Incremental
+```python
+{{
+config(
+materialized = 'incremental',
+on_schema_change='fail'
+)
+}}
+WITH src_reviews AS (
+SELECT * FROM {{ ref('src_reviews') }}
+)
+SELECT * FROM src_reviews
+WHERE reviews is not null
+{% if is_incremental() %}
+AND date > (select max(date) from {{ this }})
+{% endif %}
+```
