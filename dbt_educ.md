@@ -35,9 +35,11 @@ dbt_yalla.yml
 ```python
 models:
   dbtyalla:
-  +materialized: view
-  dim: 
-  +materialized: table
+    +materialized: view
+    dim:
+      +materialized: table
+    src:
+      +materialized: ephemeral
 ```
 ### Materialized Incremental
 ```python
@@ -55,4 +57,70 @@ WHERE reviews is not null
 {% if is_incremental() %}
 AND date > (select max(date) from {{ this }})
 {% endif %}
+```
+
+### Materialized Ephemeral
+- Understand how models can be connected 
+- Understand the four bult-in materializations 
+- Understand how materializations can be configured on the file and project level
+- Use dbt run with extra parameters. 
+
+#### View: 
+##### Use it: 
+- You want a lightweight representation  
+- You don't reuse data too often 
+##### Dont use it: 
+- You read from the same model several times
+
+#### Table: 
+##### Use it: 
+- You read from this model repeatedly 
+
+##### Dont use it: 
+- Building single-use models 
+- Your model is populated incrementally 
+
+#### Incremental (table appends) 
+##### Use it: 
+- Fact tables 
+- Appends to tables 
+
+##### Dont use it: 
+- You want to update historical records
+
+
+#### Ephemeral (CTEs): 
+##### Use it: 
+- You merely want an alias to your date 
+
+##### Dont use it: 
+You read from the same model several times 
+
+
+```python
+WITH l AS (
+    SELECT * 
+    FROM {{ ref("dim_listings_cleansed") }}
+),
+
+h AS (
+    SELECT * 
+    FROM {{ ref("dim_hosts_cleansed") }}
+)
+
+SELECT
+l.listing_id,
+l.listing_name,
+l.room_type,
+l.minimum_nights,
+l.price,
+l.host_id,
+h.host_name,
+h.is_superhost AS host_is_superhost,
+l.created_at,
+GREATEST(l.updated_at, h.updated_at) AS updated_at
+
+FROM l
+LEFT JOIN h 
+ON h.host_id = l.host_id
 ```
