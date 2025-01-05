@@ -211,8 +211,8 @@ updated_at='updated_at',
 invalidate_hard_deletes=True
 )
 }}
-select * FROM {{ ref('src_listings') }}
-{% endsnapshot %}
+select * FROM {{ source('airbnb', 'listings') }}
+{% endsnapshot %} 
 ```
 
 ## how it works 
