@@ -315,7 +315,7 @@ Run Separately:
 - Singular tests are executed during dbt test.
 
 |Feature|Generic Tests| Singular Tests|
----------------------------------------
+|-------|-------------|----------------|
 |Definition Location| In schema.yml|In tests/as SQL files|
 |Reusability|Reusable across models an columns.|One-off, specific to a model|
 |Complexity|Best for simple column-level checks|Suitable for complex custom logic|
