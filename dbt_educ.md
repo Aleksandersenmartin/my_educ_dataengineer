@@ -299,19 +299,19 @@ debuging in dbt use the following:
 cat target/compiled/dbtyalla/models/schema.yml/accepted_values_dim_listings_c_b500aa6b2c341d14ad231dae7b4d7d24.sql
 ```
 
-## Singular Tests: 
+### Singular Tests: 
 
 Singular tests are stored in the test folder
 
 Singular tests are one-off, model-specific tests written as SQL queries. They are used for custom validation or complex logic that is not covered by generic tests.
 
-Key Characteristics:
+#### Key Characteristics:
 - Defined in the tests/ Directory: Singular tests are written as SQL files in the tests/ folder.
 
-Custom Logic:
+#### Custom Logic:
 - They allow you to write any SQL logic to validate your data.
 
-Run Separately:
+#### Run Separately:
 - Singular tests are executed during dbt test.
 
 |Feature|Generic Tests| Singular Tests|
@@ -322,4 +322,16 @@ Run Separately:
 |Examples|Unique, Not_null, relationships|validity checks, custom constraints|
 |Execution|Part of dbt test|Part of dbt test|
 
+## Macros in DBT
+Macros in dbt are reusable code snippets written in Jinja, a templating language. They allow you to streamline repetitive logic, enforce best practices, and make your SQL models more modular and maintainable. Essentially, macros are functions that you can call within your dbt project to perform tasks or generate dynamic SQL.
+
+#### Why Use Macros in dbt?
+1.	Reusability:
+- Write a piece of logic once and use it across multiple models.
+2.	Dynamic SQL:
+- Create SQL queries that adapt based on parameters, conditions, or context.
+3.	Consistency:
+- Enforce standard practices by centralizing logic in a macro.
+4.	Efficiency:
+- Avoid duplicating code and simplify maintenance.
 
