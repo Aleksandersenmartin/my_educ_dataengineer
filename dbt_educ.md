@@ -177,6 +177,21 @@ FROM {{ source('raw', 'customer_data') }}
 {% endsnapshot %}
 ```
 
+```sql
+{% snapshot scd_raw_listings %}
+{{
+config(
+target_schema='DEV',
+unique_key='id',
+strategy='timestamp',
+updated_at='updated_at',
+invalidate_hard_deletes=True
+)
+}}
+select * FROM {{ ref('src_listings') }}
+{% endsnapshot %}
+```
+
 ## how it works 
 1.	target_schema:
 - Specifies where the snapshot table is stored in your warehouse.
