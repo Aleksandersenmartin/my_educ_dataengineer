@@ -253,6 +253,8 @@ Tests in dbt are assertions that validate your data to ensure its quality, consi
 2.	Executed Using dbt test:
 - When you run dbt test, dbt translates these test definitions into SQL queries and executes them against your data warehouse.
 
+
+### Generic tests 
 ```python
 version: 2 
 
