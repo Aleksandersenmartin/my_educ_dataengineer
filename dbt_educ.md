@@ -256,6 +256,16 @@ Tests in dbt are assertions that validate your data to ensure its quality, consi
 
 ### Generic tests 
 Generic tests are stored in models folder 
+
+Generic tests are reusable, parameterized tests that validate data based on common data quality rules. They are defined in your schema.yml file and apply directly to specific columns or tables in your models or sources.
+
+Key Characteristics:
+- Predefined: dbt provides built-in generic tests (e.g., unique, not_null, relationships, accepted_values).
+
+Customizable: 
+- You can write your own generic tests and reuse them across your project.
+- Applied in schema.yml: You specify the tests for columns or tables directly in the YAML configuration.
+
 ```python
 version: 2 
 
@@ -289,8 +299,27 @@ debuging in dbt use the following:
 cat target/compiled/dbtyalla/models/schema.yml/accepted_values_dim_listings_c_b500aa6b2c341d14ad231dae7b4d7d24.sql
 ```
 
-
-3.	Results:
--	If a test fails, dbt outputs detailed information about the failure, helping you identify and address data quality issues.
+## Singular Tests: 
 
 Singular tests are stored in the test folder
+
+Singular tests are one-off, model-specific tests written as SQL queries. They are used for custom validation or complex logic that is not covered by generic tests.
+
+Key Characteristics:
+- Defined in the tests/ Directory: Singular tests are written as SQL files in the tests/ folder.
+
+Custom Logic:
+- They allow you to write any SQL logic to validate your data.
+
+Run Separately:
+- Singular tests are executed during dbt test.
+
+|Feature|Generic Tests| Singular Tests|
+---------------------------------------
+|Definition Location| In schema.yml|In tests/as SQL files|
+|Reusability|Reusable across models an columns.|One-off, specific to a model|
+|Complexity|Best for simple column-level checks|Suitable for complex custom logic|
+|Examples|Unique, Not_null, relationships|validity checks, custom constraints|
+|Execution|Part of dbt test|Part of dbt test|
+
+
