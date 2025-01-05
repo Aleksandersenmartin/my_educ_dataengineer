@@ -229,3 +229,29 @@ After this have been done do you have to execute the snapshot in the terminal li
 ```python
 dbt snapshot
 ```
+
+# Tests 
+Tests in dbt are assertions that validate your data to ensure its quality, consistency, and accuracy. They are used to catch issues like missing values, duplicates, or invalid relationships before the data is used for analysis or reporting.
+
+## Types of Tests in dbt
+1.	Generic Tests:
+- Predefined, reusable tests for common data quality checks.
+- Examples include:
+- unique: Ensures that a column has unique values.
+- not_null: Ensures that a column has no null values.
+- relationships: Ensures referential integrity between two tables.
+- accepted_values: Ensures that column values belong to a predefined set.
+
+2.	Custom Tests:
+-	User-defined tests written in SQL to handle specific business logic.
+-	Example: Check if all sales records have a valid customer ID.
+
+## How Tests Work in dbt
+1.	Defined in schema.yml:
+- Tests are defined in the schema.yml file associated with your models or sources.
+
+2.	Executed Using dbt test:
+- When you run dbt test, dbt translates these test definitions into SQL queries and executes them against your data warehouse.
+
+3.	Results:
+-	If a test fails, dbt outputs detailed information about the failure, helping you identify and address data quality issues.
