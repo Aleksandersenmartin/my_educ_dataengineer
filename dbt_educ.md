@@ -281,5 +281,11 @@ models:
 
 ```
 
+debuging in dbt use the following: 
+```python
+cat target/compiled/dbtyalla/models/schema.yml/accepted_values_dim_listings_c_b500aa6b2c341d14ad231dae7b4d7d24.sql
+```
+
+
 3.	Results:
 -	If a test fails, dbt outputs detailed information about the failure, helping you identify and address data quality issues.
