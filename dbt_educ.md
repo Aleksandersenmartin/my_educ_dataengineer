@@ -255,6 +255,7 @@ Tests in dbt are assertions that validate your data to ensure its quality, consi
 
 
 ### Generic tests 
+Generic tests are stored in models folder 
 ```python
 version: 2 
 
@@ -291,3 +292,5 @@ cat target/compiled/dbtyalla/models/schema.yml/accepted_values_dim_listings_c_b5
 
 3.	Results:
 -	If a test fails, dbt outputs detailed information about the failure, helping you identify and address data quality issues.
+
+Singular tests are stored in the test folder
