@@ -254,15 +254,31 @@ Tests in dbt are assertions that validate your data to ensure its quality, consi
 - When you run dbt test, dbt translates these test definitions into SQL queries and executes them against your data warehouse.
 
 ```python
-version: 2
+version: 2 
 
 models:
-  - name: dim_listings_cleansed
-    columns:
+ - name: dim_listings_cleansed
+   columns: 
       - name: listing_id
         tests:
           - unique
           - not_null
+     
+      - name: host_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_host_cleansed')
+              field: host_id
+    
+      - name: room_type
+        tests:
+          - accepted_values:
+              values: ['Entire home/apt',
+                       'Private room',
+                       'Shared room',
+                       'Hotel room']
+
 ```
 
 3.	Results:
