@@ -124,3 +124,70 @@ FROM l
 LEFT JOIN h 
 ON h.host_id = l.host_id
 ```
+
+
+# Sources and Seeds 
+
+# Snapshots 
+	- Understand how dbt handles type-2 slowly changing dimension 
+	- Understanding snapshot strategies 
+	- Learning how to create snapshots on top of our listings and host models 
+
+## Snapshot overview: 
+Snapshots in dbt are used to track changes to records in your source data over time. They enable slowly changing dimensions (SCD) functionality by capturing and storing historical versions of data. This is particularly useful when your source data changes frequently, but you need to maintain a historical record for analysis.
+
+## How snapshot works in DBT
+1.	Define a Snapshot:
+- You create a snapshot file in your snapshots directory, specifying:
+- The source data.
+- The unique identifier for each record.
+- The conditions under which dbt should detect changes.
+
+2.	dbt Executes Snapshots:
+- When you run dbt snapshot, dbt checks the source data for changes.
+- 	New rows or updates to existing rows are captured in the snapshot table.
+
+3.	Snapshot Table:
+-	dbt stores snapshots in your data warehouse as a table.
+-	Each record includes metadata about when it was inserted and (optionally) when it was updated.
+
+4.	Incremental Updates:
+-	Snapshots are incremental, meaning only changes since the last dbt snapshot run are appended to the table
+
+```sql
+{% snapshot customer_snapshot %}
+
+--Source table
+{{
+    config(
+        target_schema='snapshots',  -- Where the snapshot table is stored
+        unique_key='customer_id',  -- Unique identifier for each record
+        strategy='timestamp',      -- Strategy to detect changes
+        updated_at='updated_at'    -- Timestamp column to track updates
+    )
+}}
+
+SELECT
+    customer_id,
+    name,
+    address,
+    updated_at
+FROM {{ source('raw', 'customer_data') }}
+
+{% endsnapshot %}
+```
+
+## how it works 
+1.	target_schema:
+- Specifies where the snapshot table is stored in your warehouse.
+2.	unique_key:
+-	Identifies the unique record for which changes are tracked.
+3.	strategy:
+-	"timestamp" compares the updated_at column to detect changes.
+4.	Source Query:
+-	Pulls data from the customer_data table.
+
+After this have been done do you have to execute the snapshot in the terminal like
+```python
+dbt snapshot
+```
