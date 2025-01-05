@@ -128,6 +128,29 @@ ON h.host_id = l.host_id
 
 # Sources and Seeds 
 
+To make our project much more easier and structured do we have to connect it to our sources:
+
+```python
+version: 2
+
+sources:
+  - name: airbnb
+    schema: raw
+    tables:
+      - name: listings
+        identifier: raw_listings
+
+      - name: hosts
+        identifier: raw_hosts
+
+      - name: reviews
+        identifier: raw_reviews
+        loaded_at_field: date
+        freshness:
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 24, period: hour}
+```
+
 # Snapshots 
 	- Understand how dbt handles type-2 slowly changing dimension 
 	- Understanding snapshot strategies 
