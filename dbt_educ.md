@@ -355,4 +355,30 @@ models:
 		- not_null 
 ```
 
+After this is done can you write in the terminal the follwing 
+```python
+dbt docs geberate
+```
+
+otherwise you can use the built in markdown function in dbt and you can do it as followed: 
+
+1. create a new file that names docs.md or something representative
+2. then do you write your docs
+```python
+{% docs dim_listing_cleansed_minimum_nights %}
+Minimum number of nights required to rent this property. 
+
+Keep in min that old listings might have `minimum_nights` set to 0 in the source tables. Our cleansed algorithm upadtes this to `1`
+
+{% enddocs%}
+```
+3. then can you do this in schema.yml
+```python
+    - name: minimum_nights
+        description: '{{doc("docs dim_listing_cleansed_minimum_nights")}}'
+        tests:
+          - positive_value 
+```
+
+
 or you can use a standalone markdown file that let you insert pictures and flowcharts of the dbt project if needed. 
