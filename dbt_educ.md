@@ -335,3 +335,24 @@ Macros in dbt are reusable code snippets written in Jinja, a templating language
 4.	Efficiency:
 - Avoid duplicating code and simplify maintenance.
 
+
+## Documentation in dbt 
+Documentation is crucial for you and other to understand what you've been doing in dbt. 
+this can be done by two different ways. 
+
+1. do it in your schema.yml and write like this:
+
+```python
+version: 2
+
+models:
+ - name: dim_list_cleansed
+   description: Cleansed table which contains Airbnb listings
+   columns:
+	- name: listing_id
+	  tests:
+		- unique
+		- not_null 
+```
+
+or you can use a standalone markdown file that let you insert pictures and flowcharts of the dbt project if needed. 
